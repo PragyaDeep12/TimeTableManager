@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="default" extends="struts-default">
+	    
+	   <action name="registerTeacher" class="com.pragya.timetable.controller.TeacherRegistrationAction" method="register">
+	   <result name="fail">/teacher_registration.jsp</result>
+	   <result name="success" type="chain">setoffdays</result>
+	   </action>
+	   <action name="viewTeacher" class="com.pragya.timetable.controller.TeacherViewAction" method="viewTeachers">
+	   <result name="success">/view_teachers.jsp</result>
+	   </action>
+	   <action name="setoffdays" class="com.pragya.timetable.controller.TeacherRegistrationAction" method="viewOffDays">
+	   <result name="success">/selectoffday.jsp</result>
+	   </action>
+	   <action name="teacherOffDays" class="com.pragya.timetable.controller.TeacherRegistrationAction" method="teacherOffDays">
+	   <result name="success" type="chain">viewselectsubject</result>
+	   </action>
+	   
+	   <action name="viewselectsubject" class="com.pragya.timetable.controller.TeacherRegistrationAction" method="viewSelectSubject">
+	   <result name="success">/select_subject.jsp</result>
+	   </action>
+	   
+	   <action name="setsubject" class="com.pragya.timetable.controller.TeacherRegistrationAction" method="setSubject">
+	   <result name="success">/home.jsp</result>
+	   <result name="fail" type="chain">viewselectsubject</result>
+	   </action>
+	   
+	   <action name="teacherlogin" class="com.pragya.timetable.controller.TeacherLoginAction" method="login">
+	   <result name="success">/teacher_page.jsp</result>
+	   <result name="fail">/teacher_login.jsp</result>
+	   </action>
+	   
+	   <action name="adminlogin" class="com.pragya.timetable.controller.AdminLoginAction" method="adminLogin">
+	   
+	   <result name="success">/admin.jsp</result>
+	   <result name="fail">/adminlogin.jsp</result>
+	   </action>
+	   
+	   <action name="addsubject" class="com.pragya.timetable.controller.SubjectAddAction" method="addSubject">
+	   <result name="success">/home.jsp</result>
+	   <result name="fail">/new_subject.jsp</result>
+	   </action>
+	   <action name="viewRoutine" class="com.pragya.timetable.controller.ViewRoutineAction" method="viewRoutine">
+	   <result name="success">/printRoutine.jsp</result>
+	   </action>
+	   <action name="viewSemRoutine" class="com.pragya.timetable.controller.ViewRoutineAction" method="viewSemRoutine">
+	   <result name="success">/printRoutine.jsp</result>
+	   <result name="fail">/home.jsp</result>
+	   </action>
+	   <action name="viewPeriod" class="com.pragya.timetable.controller.ViewPeriodAction" method="viewPeriod">
+	   <result name="success">/viewperiod.jsp</result>
+	   <result name="fail">/home.jsp</result>
+	   </action>
+	   <action name="generateNewRoutine" class="com.pragya.timetable.controller.GenerateNewRoutine" method="newRoutine">
+	   <result name="success" >/settutorials.jsp</result>
+	   <result name="fail">/home.jsp</result>
+	   </action>
+	   <action name="settutorials" class="com.pragya.timetable.controller.GenerateNewRoutine" method="getTutorialString">
+	   <result name="fail"  type="chain">generateNewRoutine</result>
+	   <result name="success">/home.jsp</result>
+	   </action>
+	   <action name="selectTeacher" class="com.pragya.timetable.controller.TeacherRoutine" method="selectTeacher">
+	   <result name="success">/selectteacher.jsp</result>
+	   </action>
+	   <action name="viewTeacherRoutine" class="com.pragya.timetable.controller.TeacherRoutine" method="viewRoutine" >
+	   <result name="success">/TeacherRoutine.jsp</result>
+	   </action>
+	</package>
+
+</struts>  
